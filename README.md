@@ -139,6 +139,7 @@ Sweeps are resume-safe: each leg writes an append-only manifest and the runner s
 | `configs/` | Configuration templates (`*.example.*`); your real `default.yaml` stays local. |
 | `docker/` | Kali tool-container image and helper scripts. |
 | `results/` | Sanitized aggregate summaries: leaderboard, per-level, per-class, refusals, unsolved, JSON. |
+| `scans/` | Curated single-challenge smoke-test runs (`public_smoke`, `public_smoke_azure`) — full per-attempt artifacts as a worked example. |
 | `docs/` | Results summary and the XBOW challenge inventory. |
 | `tests/` | Unit and integration tests. |
 
@@ -146,7 +147,7 @@ Sweeps are resume-safe: each leg writes an append-only manifest and the runner s
 
 ## Safety
 
-Solkyn can execute real offensive-security tools. Only run it against targets you own or are explicitly authorized to test. Keep API keys in `.env`, review generated commands and reports before sharing them, and do not publish raw traces without redaction — this repository publishes **sanitized aggregate summaries only**, not raw per-attempt transcripts.
+Solkyn can execute real offensive-security tools. Only run it against targets you own or are explicitly authorized to test. Keep API keys in `.env`, review generated commands and reports before sharing them, and do not publish raw traces without redaction. This repository publishes **sanitized aggregate summaries** plus a small **curated single-challenge smoke demo** under `scans/` (checked for secrets) — not the full raw sweep transcripts.
 
 ## Repository Notes
 

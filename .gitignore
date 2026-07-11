@@ -26,11 +26,15 @@ htmlcov/
 *.p12
 *.pfx
 
-# Local run output
+# Local run output — raw sweeps stay local; the curated public smoke demos are tracked
 benchmarks/
-scans/
 logs/
 tmp/
+scans/*
+!scans/public_smoke/
+!scans/public_smoke/**
+!scans/public_smoke_azure/
+!scans/public_smoke_azure/**
 
 # Web/build output
 node_modules/
