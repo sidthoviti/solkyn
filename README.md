@@ -6,8 +6,6 @@ It was built to answer a narrow research question — *if you hold the agent har
 
 > **Blog post: [The Solkyn Experiment — Models Tie, Systems Decide](https://sidthoviti.com/the-solkyn-experiment-models-tie-systems-decide/)**
 
-> ⚠️ **Authorized use only.** Solkyn runs offensive-security tooling. Use it exclusively on systems you own or are explicitly authorized to test. It is a research harness, not a replacement for a human penetration tester.
-
 ---
 
 ## Quick Summary of Results
@@ -144,14 +142,6 @@ Sweeps are resume-safe: each leg writes an append-only manifest and the runner s
 | `tests/` | Unit and integration tests. |
 
 ---
-
-## Safety
-
-Solkyn can execute real offensive-security tools. Only run it against targets you own or are explicitly authorized to test. Keep API keys in `.env`, review generated commands and reports before sharing them, and do not publish raw traces without redaction. This repository publishes **sanitized aggregate summaries** plus a small **curated single-challenge smoke demo** under `scans/` (checked for secrets) — not the full raw sweep transcripts.
-
-## Repository Notes
-
-This public repository starts from a clean export of a private research workspace. Historical commits were not published because the private workspace contained credentials, local configuration, raw traces, and development notes not suitable for release.
 
 ## License
 
