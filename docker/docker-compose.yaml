@@ -1,0 +1,22 @@
+# Solkyn development environment
+# Usage: docker compose up -d
+# This creates the solkyn-net network for agent ↔ challenge communication.
+
+networks:
+  solkyn-net:
+    name: solkyn-net
+    driver: bridge
+
+services:
+  kali:
+    build:
+      context: .
+      dockerfile: Dockerfile.kali
+    image: solkyn/kali:latest
+    container_name: solkyn-dev
+    networks:
+      - solkyn-net
+    command: sleep infinity
+    # To connect XBOW challenge containers to this network:
+    #   docker network connect solkyn-net <challenge-container>
+    # Or use ContainerManager.connect_to_network() from Python.

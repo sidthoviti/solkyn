@@ -1,0 +1,44 @@
+{#-
+  Solkyn solver system prompt template (T20.1).
+
+  Slots:
+    system            — base solver_system.md content (always present)
+    playbooks         — list of playbook texts (may be empty)
+    priority_directive — optional tag-priority steering text
+    progress_content  — optional carry-over from a previous attempt's progress.md
+    custom_instructions — optional per-run overrides
+    canary            — optional per-run UUID embedded for trace integrity / leak detection
+
+  Whitespace is reproduced to match pre-T20.1 string-concat output for the
+  default case (no progress / instructions / canary). The legacy assembly was:
+      "\n\n".join([system, "\n\n## Vulnerability Playbooks\n", pb1, pb2, ..., "\n\n## ⚡ PRIORITY DIRECTIVE\n..."])
+  which renders as:
+      {system}\n\n\n\n## Vulnerability Playbooks\n\n\n{pb1}\n\n{pb2}\n\n...\n\n\n\n## ⚡ PRIORITY DIRECTIVE\n...
+-#}
+{{ system }}{% if playbooks %}
+
+
+
+## Vulnerability Playbooks
+
+
+{% for pb in playbooks %}{{ pb }}{% if not loop.last %}
+
+{% endif %}{% endfor %}{% endif %}{% if priority_directive %}
+
+
+
+## ⚡ PRIORITY DIRECTIVE
+{{ priority_directive }}{% endif %}{% if progress_content %}
+
+
+## Progress from Previous Attempt
+
+{{ progress_content }}{% endif %}{% if custom_instructions %}
+
+
+## Additional Instructions
+
+{{ custom_instructions }}{% endif %}{% if canary %}
+
+<!-- canary: {{ canary }} -->{% endif %}

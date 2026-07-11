@@ -1,0 +1,52 @@
+target:
+  url: ""
+  type: web
+  platform: standalone
+
+agent:
+  max_iterations: 60
+  timeout: 600
+  max_time_seconds: null
+  max_cost_usd: null
+
+docker:
+  image: solkyn/kali:latest
+  network: solkyn-net
+  command_timeout: 120
+
+models:
+  default: openai-compatible
+  providers:
+    openai-compatible:
+      provider: openai-compatible
+      model: your-model-name
+      base_url: ${OPENAI_COMPATIBLE_BASE_URL}
+      api_key: ${OPENAI_COMPATIBLE_API_KEY}
+      max_tokens: 4096
+      temperature: 0
+      seed: 42
+
+    azure-gpt54:
+      provider: openai-compatible
+      model: gpt-5.4
+      base_url: ${AZURE_AI_BASE_URL}
+      api_key: ${AZURE_AI_API_KEY}
+      max_tokens: 4096
+      temperature: 0
+      seed: 42
+
+solver:
+  name: single_loop_compact
+  hacksynth:
+    planner_model: null
+    summarizer_model: null
+
+pricing:
+  your-model-name:
+    input_per_1k: 0.0
+    output_per_1k: 0.0
+    cache_read_per_1k: 0.0
+  gpt-5.4:
+    input_per_1k: 0.00125
+    output_per_1k: 0.01
+    cache_read_per_1k: 0.000125

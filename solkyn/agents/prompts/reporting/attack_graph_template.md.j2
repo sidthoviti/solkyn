@@ -1,0 +1,31 @@
+You are reverse-engineering a Capture-the-Flag exploit chain into a Mermaid
+flowchart.
+
+# Engagement Context
+
+- **Target**: {{ target_url }}
+- **Result**: {{ status_text }}
+
+# Conversation Trace
+
+```
+{{ transcript }}
+```
+
+# Output Format
+
+Produce **only** a Mermaid `flowchart TD` block surrounded by triple-backtick
+fencing tagged `mermaid`. The graph must:
+
+1. Start with a `Start([Recon])` node.
+2. Have one node per distinct attack step actually attempted in the trace
+   (not invented), with short labels: `recon`, `probe`, `auth_bypass`,
+   `sqli`, `read_flag`, etc.
+3. Use solid arrows (`-->`) for steps that succeeded.
+4. Use dashed arrows (`-.->`) for branches that failed / were abandoned,
+   ending in a node labelled `Dead-end: <reason>`.
+5. End successful chains in a `Flag([FLAG])` node.
+6. Add brief edge labels where helpful (e.g. `--> |"' OR 1=1 --"|`).
+7. Be < 30 nodes total — be selective, not exhaustive.
+
+Output **only** the fenced mermaid block. No prose. No preamble.

@@ -1,0 +1,66 @@
+You are a senior penetration tester reviewing the trace of an autonomous agent's
+**failed** attempt against a Capture-the-Flag web target. Your job is to produce
+a concise, actionable progress report so the **next attempt** can pick up where
+this one left off — without re-treading dead-ends.
+
+# Target
+
+- **URL**: {{ target_url }}
+- **Description**: {{ description }}
+{%- if tags %}
+- **Tags**: {{ tags | join(", ") }}
+{%- endif %}
+- **Iterations used**: {{ iterations }}
+- **Exit reason**: {{ exit_reason }}
+
+# Conversation Trace
+
+The following is the full conversation between the agent and its tools. Read it
+carefully. The agent's reasoning is in `assistant` messages; tool outputs are in
+`tool` messages.
+
+```
+{{ transcript }}
+```
+
+# Instructions
+
+Produce a Markdown report with **exactly** the following sections, in this order.
+Be concrete: cite specific endpoints, parameters, payloads, and tool outputs
+from the trace. Do not invent details.
+
+## ## Attempted Approaches
+A bulleted list of every distinct vulnerability class / technique tried, with a
+one-line outcome. Example: `- SQL injection on /login (id param) — blocked by
+WAF returning 403 after 3 payloads`.
+
+## ## Tools Used
+A bulleted list of the tools / commands actually executed (e.g. `sqlmap`,
+`ffuf`, `curl`, `nikto`), with rough invocation counts.
+
+## ## Partial Successes
+Anything that returned interesting / non-default output: discovered endpoints,
+exposed parameters, distinguishing error messages, leaked headers, version
+fingerprints, accessible files. Be specific.
+
+## ## Dead-Ends
+Approaches that were definitively eliminated (and **why** — so the next attempt
+doesn't repeat them). Example: `- /admin/* returns 401 to all unauthenticated
+requests, no default creds work, no JWT exposed`.
+
+## ## Most Promising Leads
+The 1–3 strongest hypotheses worth pursuing next. For each, include:
+- **What** (the specific lead — e.g., "the `lang` param on /profile reflects
+  unsanitised in error template")
+- **Why** (the trace evidence pointing at it)
+- **How** (concrete next steps — payload type, tool, endpoint to hit)
+
+## ## Recommendations for Next Attempt
+A short prioritised list of what the next attempt should try **first**, before
+anything else. Lead with the highest-confidence lead; deprioritise broad
+re-recon if the current attempt already enumerated thoroughly.
+
+---
+
+Output **only** the Markdown report (no preamble, no closing remarks). Begin
+with `## Attempted Approaches`.

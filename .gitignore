@@ -1,0 +1,53 @@
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+dist/
+build/
+
+# Virtual environments
+.venv/
+venv/
+ENV/
+
+# Test, type, and lint caches
+.pytest_cache/
+.coverage
+htmlcov/
+.mypy_cache/
+.ruff_cache/
+
+# Environment and secrets
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+*.p12
+*.pfx
+
+# Local run output
+benchmarks/
+scans/
+logs/
+tmp/
+
+# Web/build output
+node_modules/
+.next/
+web/.next/
+
+# OS/editor
+.DS_Store
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# Local run configuration (keep the .example templates tracked)
+configs/default.yaml
+!configs/default.example.yaml
+
+# Unpublished long-form writing (blog draft lives on sidthoviti.com)
+docs/cross-model-xbow-blog-post.md
+docs/methodology.md
