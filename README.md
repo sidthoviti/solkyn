@@ -4,7 +4,7 @@ Solkyn is an experimental **autonomous web-pentesting agent and benchmark harnes
 
 It was built to answer a narrow research question — *if you hold the agent harness fixed and swap only the underlying model, what actually changes?* — and the write-up of that experiment is here:
 
-> **Blog post: [The Solkyn Experiment — Models Tie, Systems Decide](https://sidthoviti.com/the-solkyn-experiment-models-tie-systems-decide/)**
+> **Blog post: [The Solkyn Experiment](https://sidthoviti.com/the-solkyn-experiment/)**
 
 ---
 
@@ -19,7 +19,7 @@ In a **source-aware whitebox** run of the 104-challenge [XBOW validation suite](
 | `DeepSeek-V4-Pro` | 92/104 | 98/104 |
 | **Three-model union** | — | **99/104** |
 
-The headline is a **tie on first-attempt capability** — all three solve exactly 92/104 — with the real differences showing up in *efficiency* (iterations-to-solve), retry behavior, and provider refusal behavior rather than raw solve rate. These numbers are a source-aware benchmark snapshot, **not** a blackbox pentest result or a universal model ranking. Full methodology, caveats, and analysis are in the [blog post](https://sidthoviti.com/the-solkyn-experiment-models-tie-systems-decide/); the machine-readable summaries live in [`results/`](results/) and the challenge inventory in [`docs/xbow-challenge-inventory.json`](docs/xbow-challenge-inventory.json).
+The headline is a **tie on first-attempt capability** — all three solve exactly 92/104 — with the real differences showing up in *efficiency* (iterations-to-solve), retry behavior, and provider refusal behavior rather than raw solve rate. These numbers are a source-aware benchmark snapshot, **not** a blackbox pentest result or a universal model ranking. Full methodology, caveats, and analysis are in the [blog post]([https://sidthoviti.com/the-solkyn-experiment-models-tie-systems-decide/](https://sidthoviti.com/the-solkyn-experiment/)); the machine-readable summaries live in [`results/`](results/) and the challenge inventory in [`docs/xbow-challenge-inventory.json`](docs/xbow-challenge-inventory.json).
 
 ---
 
